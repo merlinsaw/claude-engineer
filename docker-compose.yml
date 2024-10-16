@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: claude_engineer_app
+    volumes:
+      - .:/app
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+      - ELEVEN_LABS_API_KEY=${ELEVEN_LABS_API_KEY}
+    ports:
+      - "8000:8000"  # Map port 8000 on the host to port 8000 in the container
+    command: python main.py
